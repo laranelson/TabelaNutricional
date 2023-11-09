@@ -1,27 +1,22 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
 {% block content %}
+ 
+<form method="post" id="createProduct" enctype="multipart/form-data" class="my-5">
+    {% csrf_token %}
+    <h4 class="mb-4">Editar Ingrediente</h4>
 
-  <div class="row">
     <div class="col-md-12">
-      <p>
-        <a href="{% url 'ingredient:list' %}" class="btn btn-info">Cancelar</a>
-      </p>
+        {{ form.non_form_errors }}
+        <div class="mb-3">
+            {{ form|crispy }}
+        </div>
     </div>
-  </div>
 
-  <h2>Alterar Ingrediente</h2>
-
-    
-    <form method="POST" class="my-class">{% csrf_token %}
-
-        {{ form|crispy }}
-
-        <br>
-        <button type="submit" class="btn p-2 container btn-primary">SALVAR</button>
-
-    </form>
-    
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-success">SALVAR</button>
+        <a href="{% url 'recipe:list' %}" class="btn btn-danger">CANCELAR</a>
+    </div>
+</form>
 
 {% endblock %}
