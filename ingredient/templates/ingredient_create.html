@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<form method="post" id="createProduct" enctype="multipart/form-data" class="my-5">
+    {% csrf_token %}
+    <h4 class="mb-4">Cadastrar Ingrediente</h4>
+
+    <div class="col-md-12">
+        {{ form.non_form_errors }}
+        <div class="mb-3">
+            {{ form|crispy }}
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-success">SALVAR</button>
+        <a href="{% url 'recipe:list' %}" class="btn btn-danger">CANCELAR</a>
+    </div>
+</form>
+
+{% endblock %}

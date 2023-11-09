@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404 # render ---- DEPOIS REMOVER????
+from django.shortcuts import get_object_or_404 
 from django.views.generic import (
                                     ListView, 
                                     CreateView, 
@@ -8,14 +8,12 @@ from django.views.generic import (
 from .models import Ingredient
 from .forms import IngredientForm
 from django.urls import reverse
-#from django.shortcuts import get_list_or_404   ---- DEPOIS REMOVER????
-#from django.db.models import Q    ---- DEPOIS REMOVER????
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 class IngredientListView(LoginRequiredMixin, ListView):
     login_url = "/login/"
     redirect_field_name = "redirect_to"
-    template_name = "ingredient/list.html"
+    template_name = "ingredient_list.html"
     paginate_by = 5
     model = Ingredient 
     
@@ -25,7 +23,7 @@ class IngredientListView(LoginRequiredMixin, ListView):
 class IngredientCreateView(LoginRequiredMixin, CreateView):
     login_url = "/login/"
     redirect_field_name = "redirect_to"
-    template_name = "ingredient/create.html"
+    template_name = "ingredient_create.html"
     form_class = IngredientForm
 
     def form_valid(self, form):
@@ -39,7 +37,7 @@ class IngredientCreateView(LoginRequiredMixin, CreateView):
 class IngredientUpdateView(LoginRequiredMixin, UpdateView):
     login_url = "/login/"
     redirect_field_name = "redirect_to"
-    template_name = "ingredient/update.html"
+    template_name = "ingredient_update.html"
     form_class = IngredientForm
     
     def get_object(self):
@@ -56,7 +54,7 @@ class IngredientUpdateView(LoginRequiredMixin, UpdateView):
 class IngredientDeleteView(LoginRequiredMixin, DeleteView):
     login_url = "/login/"
     redirect_field_name = "redirect_to"
-    template_name = "ingredient/delete.html"
+    template_name = "ingredient_delete.html"
     
     def get_object(self):
         id = self.kwargs.get("id")

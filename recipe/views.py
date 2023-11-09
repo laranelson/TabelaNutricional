@@ -1,19 +1,13 @@
 
 from django.shortcuts import redirect
-#from django.contrib.auth.models import User ---- DEPOIS REMOVER????
-#from django.forms import inlineformset_factory ---- DEPOIS REMOVER????
 from django.db import transaction
 from django.contrib.auth.decorators import login_required
-#from django.utils.decorators import method_decorator---- DEPOIS REMOVER????
 from django.db import transaction
-from django.db.models.query import QuerySet
 from django.urls import reverse_lazy
-from recipe.forms import RecipeItemFormSet, RecipeForm#, RecipeItemForm   ---- DEPOIS REMOVER????
-from recipe.models import Recipe#, RecipeItem   ---- DEPOIS REMOVER????
+from recipe.forms import RecipeItemFormSet, RecipeForm
+from recipe.models import Recipe
 from ingredient.models import Ingredient
-#from django.shortcuts import get_object_or_404, render ---- DEPOIS REMOVER????
 from django.urls import reverse
-#from django.db.models import Q ---- DEPOIS REMOVER????
 from django.views.generic import (
                                     ListView, 
                                     CreateView, 
@@ -26,7 +20,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class RecipeListView(LoginRequiredMixin, ListView):
     login_url = "/login/"
     redirect_field_name = "redirect_to"
-    template_name = 'recipe/list.html'
+    template_name = 'recipe_list.html'
     paginate_by = 5
     queryset = Recipe.objects.all()
 
@@ -49,7 +43,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     redirect_field_name = "redirect_to"
     model = Recipe
     form_class = RecipeForm
-    template_name = 'recipe/create.html'
+    template_name = 'recipe_create.html'
     
     def post(self, request, *args, **kwargs):
         self.object = None
@@ -94,7 +88,7 @@ class RecipeUpdateView(LoginRequiredMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     success_url = reverse_lazy('recipe:list')
-    template_name = 'recipe/update.html'
+    template_name = 'recipe_update.html'
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -136,7 +130,7 @@ class RecipeDeleteView(LoginRequiredMixin, DeleteView):
     login_url = "/login/"
     redirect_field_name = "redirect_to"
     model = Recipe
-    template_name = 'recipe/delete.html'
+    template_name = 'recipe_delete.html'
     success_url = reverse_lazy('recipe:list')
 
 
