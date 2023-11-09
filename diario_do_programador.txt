@@ -1,0 +1,25 @@
+03/11/2023 -    REMOVIR django-ajax-selects - UTILIZANDO pip uninstall django-ajax-selects 
+                QUERO SABER QUAL O EFEITO QUE ISSO VAI CAUSAR
+
+06/11/2023 - Implementei nas class view 
+                from django.contrib.auth.mixins import LoginRequiredMixin
+                class NutritionTableListView(LoginRequiredMixin, DetailView):
+                login_url = "/login/"
+                redirect_field_name = "redirect_to"
+
+                FIZ COMENTARIO EM ALGUNS IMPORT NA VIEWS QUE CONSIDEREI FORA DE USO.
+
+                COLOQUEI PAGINAÇÃO NA LISTA DE RECEITAS
+
+                comentei alguns import no forms.py não testei a aplicação depois disso 
+
+07/11/2023 - Tratamento contra erros, em portion de recipe e ingredient
+
+from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator
+    portion = models.FloatField('Valor da porção (g)', validators=[MinValueValidator(0.1)]) 
+    def clean(self):
+        if self.portion <= 0:
+            raise ValidationError('O valor da porção deve ser maior que zero.')
+
+REMOVI {% load recipe_extra %} DE table.html

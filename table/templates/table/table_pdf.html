@@ -1,0 +1,160 @@
+
+
+
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    
+    th{
+        border: 1px solid black;
+        padding: 30%;
+        padding-bottom: 0%;
+        text-align: center;
+      
+    }
+    td{
+      border: 1px solid black;
+      padding: 30%;
+      padding-bottom: 0%;
+   }
+    
+    th {
+        background-color: #f2f2f2;
+    }
+
+    th.empty-header {
+      width: 50%; 
+    }
+
+    th.portion100 {
+      width: 20%;
+    }
+
+    th.portion {
+      width: 20%;
+    }
+
+      th.vd {
+      width: 10%;
+    }
+      td.description{
+      text-align: left;
+    }
+
+      td.value{
+      text-align: center;
+    }
+
+</style>
+
+
+<h3> recipe.name=: {{ recipe.name }} </h3>
+
+<div class="container">
+  <table class="table table-bordered table-striped">
+
+  <thead>
+    <tr><th colspan="4"><h1>Tabela Nutricional</h1></th></tr>
+    <tr><td colspan="4">
+
+      {% if recipe.portions == 1 %}Porção{% else %}Porções{% endif %}
+  
+      por embalagem: {{ recipe.portions|floatformat:"0" }}
+    
+      {% if recipe.portions == 1 %}porção{% else %}porções{% endif %}
+    
+      <br>
+      Porção: {{ recipe.portion|floatformat:"0" }} g ({{ recipe.get_measure_display }})
+
+      <br>
+      {%if acucares_totais >= 12 %} ALTO {% else %} baixo{% endif %}
+    </td></tr>
+
+    </thead>
+
+    <thead align="center">    
+        <tr>
+            <th class="empty-header"></th>
+            <th class="portion100"> 100 g </th>
+            <th class="portion"> {{ recipe.portion|floatformat:"0" }} g </th>
+            <th class="vd"> %VD* </th>               
+        </tr>
+      </thead>
+    
+
+    <tbody>
+        <tr>
+            <td class="description"> Valor energético (kcal) </td>
+            <td class="value"> {{ kcal100|floatformat:"0" }} </td>
+            <td class="value"> {{ kcal|floatformat:"0" }} </td>
+            <td class="value"> {{ kcal_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+            <td class="description"> Carboidratos totais (g) </td>
+            <td class="value"> {{ carboidrato100|floatformat:"2" }} </td>
+            <td class="value"> {{ carboidrato|floatformat:"2" }} </td>
+            <td class="value"> {{ carboidrato_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+            <td class="description"> Açúcares totais (g) </td>
+            <td class="value"> {{ acucares_totais100|floatformat:"2" }} </td>
+            <td class="value"> {{ acucares_totais|floatformat:"2" }} </td>
+            <td class="value"> {{ acucares_totais_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Açúcares Adicionados (g) </td>
+          <td class="value"> {{ acucares_adicionados100|floatformat:"2" }} </td>
+          <td class="value"> {{ acucares_adicionados|floatformat:"2" }} </td>
+          <td class="value"> {{ acucares_adicionados_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Proteína (g) </td>
+          <td class="value"> {{ proteina100|floatformat:"2" }} </td>
+          <td class="value"> {{ proteina|floatformat:"2" }} </td>
+          <td class="value"> {{ proteina_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Gorduras Totais (g) </td>
+          <td class="value"> {{ gorduras_totais100|floatformat:"2" }} </td>
+          <td class="value"> {{ gorduras_totais|floatformat:"2" }} </td>
+          <td class="value"> {{ gorduras_totais_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Gorduras saturadas (g) </td>
+          <td class="value"> {{ gorduras_saturadas100|floatformat:"2" }} </td>
+          <td class="value"> {{ gorduras_saturadas|floatformat:"2" }} </td>
+          <td class="value"> {{ gorduras_saturadas_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Gorduras trans (g) </td>
+          <td class="value"> {{ gorduras_trans100|floatformat:"2" }}</td>
+          <td class="value"> {{ gorduras_trans|floatformat:"2" }} </td>
+          <td class="value"> {{ gorduras_trans_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Fibra alimentar (g) </td>
+          <td class="value"> {{ fibra_alimentar100|floatformat:"2" }}</td>
+          <td class="value"> {{ fibra_alimentar|floatformat:"2" }} </td>
+          <td class="value"> {{ fibra_alimentar_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Sódio (mg) </td>
+          <td class="value"> {{ sodio100|floatformat:"2" }}</td>
+          <td class="value"> {{ sodio|floatformat:"2" }} </td>
+          <td class="value"> {{ sodio_vd|floatformat:"0" }} </td>
+        </tr>
+
+        <tfoot>
+          <tr><td colspan="4">* Percentual de valores diários fornecidos pela porção.</td></tr>
+        </tfoot>
+
+    </tbody>
+  </table>
+</div>		
+
+
+
+
+

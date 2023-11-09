@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" id="createProduct" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <div>
+            <h4>Atualizar Receita</h4>
+        </div>
+        <div>
+            {{ form.non_form_errors }}
+            {{ form.as_p }}
+            <h5>Adicionar Ingredientes</h5>
+             <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    {% for formset in items_formset %}
+                        {{ formset.id }}
+                        <tr>
+                            <td>
+                                {% if items_formset.can_delete %}
+                                    {{ formset.DELETE }} {{ formset.DELETE.label }}
+                                {% endif %}
+                            </td>
+                            <td>{{ formset.ingredient }} {{ formset.value }}</td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+             </table>
+            {{ items_formset.non_form_errors }}
+            {{ items_formset.management_form }}
+        </div>
+    </div>
+    <button type="submit">SALVAR</button>
+</form>
+{% endblock %}

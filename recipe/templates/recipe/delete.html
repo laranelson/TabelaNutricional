@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <form method="post">
+        {% csrf_token %}
+        <p><h3>Tem certeza que deseja deletar a receita "{{ object }}"???</h3></p>
+
+            <button type="submit" class="btn btn-outline-danger">Confirmar</button>
+            
+            <a href="{% url 'recipe:list' %}" class="btn btn-outline-dark">Cancelar</a>
+    </form>
+
+{% endblock %} 
