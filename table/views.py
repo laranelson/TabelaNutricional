@@ -7,6 +7,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+import os
+from django.conf import settings
+
 
 
 class NutritionTableListView(LoginRequiredMixin, DetailView):
@@ -145,3 +148,18 @@ def generate_pdf_report(request, pk):
         return HttpResponse('Ocorreu um erro ao gerar o PDF.')
 
     return response
+
+
+
+def pdf_view(_request, file_name):
+    pdf_path = os.path.join(settings.STATIC_ROOT, 'pdf', file_name)
+    
+    try:
+        with open(pdf_path, 'rb') as pdf_file:
+            response = HttpResponse(pdf_file.read(), content_type='application/pdf')
+            response['Content-Disposition'] = f'inline; filename={file_name}'
+            return response
+    except FileNotFoundError:
+        return HttpResponse('Arquivo não encontrado', status=404)
+    except Exception as e:
+        return HttpResponse(f'Erro ao processar o arquivo: {e}', status=500)

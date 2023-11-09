@@ -23,3 +23,10 @@ from django.core.validators import MinValueValidator
             raise ValidationError('O valor da porção deve ser maior que zero.')
 
 REMOVI {% load recipe_extra %} DE table.html
+
+
+DEPLOY PARA O HEROKU
+>>heroku login
+>>git add .
+>>git commit -am "database"
+>>git push heroku main --force       
