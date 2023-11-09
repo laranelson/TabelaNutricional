@@ -89,15 +89,15 @@ WSGI_APPLICATION = 'inlineformset.wsgi.application'
 #}
 
 #DATABASE_HEROKU
-DATABASES= {
-    'default': dj_database_url.config()
-}
+#DATABASES= {
+#    'default': dj_database_url.config()
+#}
 
 #prod_db  =  dj_database_url.config(conn_max_age=500)
 #DATABASES['default'].update(prod_db)
 
 #BASE DE DADOS LOCAL
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'db-nutritiontable',
@@ -106,7 +106,7 @@ DATABASES= {
         'HOST': 'localhost',
         'PORT': '5432',
     }
-}"""
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
