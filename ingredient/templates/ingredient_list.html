@@ -2,23 +2,31 @@
 
 {% block content %}
 
-
 <div class="row">
-    <div class="col-md-6">
-        <h2>Ingredientes</h2>
-        <!-- Coluna da lista de receitas -->
-        <!-- Coloque o código da tabela ou listagem de receitas aqui -->
+    <div class="col-md-4">
+        <!-- Celula 1 -->
+        <div>
+            <h2>Ingredientes</h2>
+        </div>
     </div>
-    <div class="col-md-6">
-        <!-- Coluna do botão "Cadastrar Ingrediente" -->
-        <div class="text-md-right">
-            <a href="{% url 'ingredient:create' %}" class="btn btn-info">Cadastrar Ingrediente</a>
+    <div class="col-md-4">
+        <!-- Celula 2 -->
+        <div></div>
+    </div>
+    <div class="col-md-4 text-right">
+        <!-- Celula 3 -->
+        <div>
+            <form method="GET" action="{% url 'ingredient:search' %}">
+                <input type="text" name="search" placeholder="Pesquisar por ingrediente">
+                <button type="submit" class="btn btn-primary">Pesquisar</button>
+            </form>
         </div>
     </div>
 </div>
+
     <table class="table table-striped table-hover">
         <tbody>
-
+            
             {% for ingredient in ingredient_list %}
             <tr>
                 <td>
@@ -34,6 +42,9 @@
            
         </tbody>
     </table>
+
+    <!--MENSAGEM DE RETORNO CASO NÃO SEJA ENCONTRADO NADA NA PESQUISA-->
+    <h1>{{ message }}</h1>
 
     <ul class="pagination">
 

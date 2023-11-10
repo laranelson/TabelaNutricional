@@ -7,6 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+
+#import para visualizar PDF def def pdf_view(_request, file_name):
 import os
 from django.conf import settings
 
@@ -16,7 +18,7 @@ class NutritionTableListView(LoginRequiredMixin, DetailView):
     login_url = "/login/"
     redirect_field_name = "redirect_to"
     model = Recipe
-    template_name = 'table/table.html'
+    template_name = 'table_create.html'
     context_object_name = 'recipe'
 
     def get_context_data(self, **kwargs):
@@ -135,7 +137,7 @@ def generate_pdf_report(request, pk):
 
 
     # Renderize o template em HTML para o PDF
-    template_path = 'table/table.html'  # Substitua pelo caminho para seu novo template HTML
+    template_path = 'table_pdf.html'  # Substitua pelo caminho para seu novo template HTML
     template = get_template(template_path)
     html = template.render(context)
     response = HttpResponse(content_type='application/pdf')

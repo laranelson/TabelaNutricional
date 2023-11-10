@@ -9,6 +9,9 @@ from .models import Ingredient
 from .forms import IngredientForm
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
+from django.http import request
+
 
 class IngredientListView(LoginRequiredMixin, ListView):
     login_url = "/login/"
@@ -62,6 +65,25 @@ class IngredientDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse("ingredient:list")
+    
+from django.http import HttpRequest
+
+
+def ingredient_list(request):
+    search_query = request.GET.get('search')
+    
+    if search_query:
+        ingredient_list = Ingredient.objects.filter(user=request.user, name__icontains=search_query)
+    else:
+        ingredient_list = Ingredient.objects.filter(user=request.user)
+
+    if not ingredient_list:  # Verifica se a lista de ingredientes está vazia
+        message = "Desculpe, não foram encontrados ingredientes com o nome pesquisado."
+        return render(request, 'ingredient_list.html', {'message': message})
+    else:
+        return render(request, 'ingredient_list.html', {'ingredient_list': ingredient_list})
+
+
 
 
    

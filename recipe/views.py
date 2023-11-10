@@ -16,6 +16,8 @@ from django.views.generic import (
 )
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
+from django.http import request
 
 class RecipeListView(LoginRequiredMixin, ListView):
     login_url = "/login/"
@@ -135,6 +137,18 @@ class RecipeDeleteView(LoginRequiredMixin, DeleteView):
 
 
 
+def recipe_list(request):
+    search_query = request.GET.get('search')
+    
+    if search_query:
+        recipe_list = Recipe.objects.filter(user=request.user, name__icontains=search_query)
+    else:
+        recipe_list = Recipe.objects.filter(user=request.user)
 
+    if not recipe_list:  # Verifica se a lista de ingredientes está vazia
+        message = "Desculpe, não foram encontrados receitas com o nome pesquisado."
+        return render(request, 'recipe_list.html', {'message': message})
+    else:
+        return render(request, 'recipe_list.html', {'recipe_list': recipe_list})
 
 
