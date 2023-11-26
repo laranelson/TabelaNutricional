@@ -5,61 +5,48 @@
     table {
         border-collapse: collapse;
     }
-
     th{
         border: 1px solid black;
         padding: 30%;
         padding-bottom: 0%;
         text-align: center;
     }
-
     td {
       border: 1px solid black;
       padding: 30%;
       padding-bottom: 0%;
    }
-    
     th {
         background-color: #f2f2f2;
     }
-
     th.empty-header {
       width: 50%; 
     }
-
     th.portion100 {
       width: 20%;
     }
-
     th.portion {
       width: 20%;
     }
-
       th.vd {
       width: 10%;
     }
-
       td.description {
       text-align: left;
     }
-    
     td.description-3 {
       text-indent: 3%;
     }
     td.description-6 {
       text-indent: 6%;
     }
-
       td.value {
       text-align: center;
     }
-
 </style>
-
 
 <h3> recipe.name=: {{ recipe.name }} </h3>
 <p><a href="{% url 'table:gerar_tabela_pdf' recipe.id %}" target="_blank">GERAR PDF</a></p>
-
 
 <div class="container">
   <table class="table table-hover">
@@ -173,6 +160,212 @@
           <td class="value"> {{ sodio|floatformat:"2" }} </td>
           <td class="value"> {{ sodio_vd|floatformat:"0" }} </td>
         </tr>
+        <tr>
+          <td class="description"> Vitamina A (µg) </td>
+          <td class="value"> {{ vitamina_a100|floatformat:"2" }}</td>
+          <td class="value"> {{ vitamina_a|floatformat:"2" }} </td>
+          <td class="value"> {{ vitamina_a_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Vitamina D (µg) </td>
+          <td class="value"> {{ vitamina_d100|floatformat:"2" }}</td>
+          <td class="value"> {{ vitamina_d|floatformat:"2" }} </td>
+          <td class="value"> {{ vitamina_d_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Vitamina C (mg) </td>
+          <td class="value"> {{ vitamina_c100|floatformat:"2" }}</td>
+          <td class="value"> {{ vitamina_c|floatformat:"2" }} </td>
+          <td class="value"> {{ vitamina_c_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Vitamina E (mg) </td>
+          <td class="value"> {{ vitamina_e100|floatformat:"2" }}</td>
+          <td class="value"> {{ vitamina_e|floatformat:"2" }} </td>
+          <td class="value"> {{ vitamina_e_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Tiamina (mg) </td>
+          <td class="value"> {{ tiamina100|floatformat:"2" }}</td>
+          <td class="value"> {{ tiamina|floatformat:"2" }} </td>
+          <td class="value"> {{ tiamina_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Riboflavina (mg) </td>
+          <td class="value"> {{ riboflavina100|floatformat:"2" }}</td>
+          <td class="value"> {{ riboflavina|floatformat:"2" }} </td>
+          <td class="value"> {{ riboflavina_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Niacina (mg) </td>
+          <td class="value"> {{ niacina100|floatformat:"2" }}</td>
+          <td class="value"> {{ niacina|floatformat:"2" }} </td>
+          <td class="value"> {{ niacina_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Vitamina B6 (mg) </td>
+          <td class="value"> {{ vitamina_b6100|floatformat:"2" }}</td>
+          <td class="value"> {{ vitamina_b6|floatformat:"2" }} </td>
+          <td class="value"> {{ vitamina_b6_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Vitamina B9 (mg) </td>
+          <td class="value"> {{ vitamina_b9100|floatformat:"2" }}</td>
+          <td class="value"> {{ vitamina_b9|floatformat:"2" }} </td>
+          <td class="value"> {{ vitamina_b9_vd|floatformat:"0" }} </td>
+        </tr>
+
+        <tr>
+          <td class="description"> Ácido Fólico (µg) </td>
+          <td class="value"> {{ acido_folico100|floatformat:"2" }}</td>
+          <td class="value"> {{ acido_folico|floatformat:"2" }} </td>
+          <td class="value"> {{ acido_folico_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Vitamina B12 (µg) </td>
+          <td class="value"> {{ vitamina_b12100|floatformat:"2" }}</td>
+          <td class="value"> {{ vitamina_b12|floatformat:"2" }} </td>
+          <td class="value"> {{ vitamina_b12_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Biotina (µg) </td>
+          <td class="value"> {{ biotina100|floatformat:"2" }}</td>
+          <td class="value"> {{ biotina|floatformat:"2" }} </td>
+          <td class="value"> {{ biotina_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Ácido Pantotênico (µg) </td>
+          <td class="value"> {{ acido_pantotenico100|floatformat:"2" }}</td>
+          <td class="value"> {{ acido_pantotenico|floatformat:"2" }} </td>
+          <td class="value"> {{ acido_pantotenico_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Cálcio (mg) </td>
+          <td class="value"> {{ calcio100|floatformat:"2" }}</td>
+          <td class="value"> {{ calcio|floatformat:"2" }} </td>
+          <td class="value"> {{ calcio_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Ferro (mg) </td>
+          <td class="value"> {{ ferro100|floatformat:"2" }}</td>
+          <td class="value"> {{ ferro|floatformat:"2" }} </td>
+          <td class="value"> {{ ferro_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Magnésio (mg) </td>
+          <td class="value"> {{ magnesio100|floatformat:"2" }}</td>
+          <td class="value"> {{ magnesio|floatformat:"2" }} </td>
+          <td class="value"> {{ magnesio_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Zinco (mg) </td>
+          <td class="value"> {{ zinco100|floatformat:"2" }}</td>
+          <td class="value"> {{ zinco|floatformat:"2" }} </td>
+          <td class="value"> {{ zinco_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Iodo (µg) </td>
+          <td class="value"> {{ iodo100|floatformat:"2" }}</td>
+          <td class="value"> {{ iodo|floatformat:"2" }} </td>
+          <td class="value"> {{ iodo_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Vitamina K (µg) </td>
+          <td class="value"> {{ vitamina_k100|floatformat:"2" }}</td>
+          <td class="value"> {{ vitamina_k|floatformat:"2" }} </td>
+          <td class="value"> {{ vitamina_k_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Fósforo (mg) </td>
+          <td class="value"> {{ fosforo100|floatformat:"2" }}</td>
+          <td class="value"> {{ fosforo|floatformat:"2" }} </td>
+          <td class="value"> {{ fosforo_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Flúor (mg) </td>
+          <td class="value"> {{ fluor100|floatformat:"2" }}</td>
+          <td class="value"> {{ fluor|floatformat:"2" }} </td>
+          <td class="value"> {{ fluor_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Cobre (mg) </td>
+          <td class="value"> {{ cobre100|floatformat:"2" }}</td>
+          <td class="value"> {{ cobre|floatformat:"2" }} </td>
+          <td class="value"> {{ cobre_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Selênio (µg) </td>
+          <td class="value"> {{ selenio100|floatformat:"2" }}</td>
+          <td class="value"> {{ selenio|floatformat:"2" }} </td>
+          <td class="value"> {{ selenio_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Molibdênio (µg) </td>
+          <td class="value"> {{ molibdenio100|floatformat:"2" }}</td>
+          <td class="value"> {{ molibdenio|floatformat:"2" }} </td>
+          <td class="value"> {{ molibdenio_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Cromo (µg) </td>
+          <td class="value"> {{ cromo100|floatformat:"2" }}</td>
+          <td class="value"> {{ cromo|floatformat:"2" }} </td>
+          <td class="value"> {{ cromo_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Manganês (mg) </td>
+          <td class="value"> {{ manganes100|floatformat:"2" }}</td>
+          <td class="value"> {{ manganes|floatformat:"2" }} </td>
+          <td class="value"> {{ manganes_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Colina (mg) </td>
+          <td class="value"> {{ colina100|floatformat:"2" }}</td>
+          <td class="value"> {{ colina|floatformat:"2" }} </td>
+          <td class="value"> {{ colina_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Potássio (mg) </td>
+          <td class="value"> {{ potassio100|floatformat:"2" }}</td>
+          <td class="value"> {{ potassio|floatformat:"2" }} </td>
+          <td class="value"> {{ potassio_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Gorduras monoinsaturadas (g) </td>
+          <td class="value"> {{ gorduras_monoinsaturadas100|floatformat:"2" }}</td>
+          <td class="value"> {{ gorduras_monoinsaturadas|floatformat:"2" }} </td>
+          <td class="value"> {{ gorduras_monoinsaturadas_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Colesterol (mg) </td>
+          <td class="value"> {{ colesterol100|floatformat:"2" }}</td>
+          <td class="value"> {{ colesterol|floatformat:"2" }} </td>
+          <td class="value"> {{ colesterol_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Gorduras poli-insaturadas, Ômega 3 (g) </td>
+          <td class="value"> {{ gorduras_omega3100|floatformat:"2" }}</td>
+          <td class="value"> {{ gorduras_omega3|floatformat:"2" }} </td>
+          <td class="value"> {{ gorduras_omega3_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Gorduras poli-insaturadas, Ômega 6 (g) </td>
+          <td class="value"> {{ gorduras_omega6100|floatformat:"2" }}</td>
+          <td class="value"> {{ gorduras_omega6|floatformat:"2" }} </td>
+          <td class="value"> {{ gorduras_omega6_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Ácido alfa-linolênico Ômega 3 (mg) </td>
+          <td class="value"> {{ acido_omega3100|floatformat:"2" }}</td>
+          <td class="value"> {{ acido_omega3|floatformat:"2" }} </td>
+          <td class="value"> {{ acido_omega3_vd|floatformat:"0" }} </td>
+        </tr>
+        <tr>
+          <td class="description"> Ácido alfa-linolênico Ômega 6 (mg) </td>
+          <td class="value"> {{ acido_omega6100|floatformat:"2" }}</td>
+          <td class="value"> {{ acido_omega6|floatformat:"2" }} </td>
+          <td class="value"> {{ acido_omega6_vd|floatformat:"0" }} </td>
+        </tr>
+
 
         <tfoot>
           <tr><td colspan="4">* Percentual de valores diários fornecidos pela porção.</td></tr>

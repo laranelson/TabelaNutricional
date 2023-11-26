@@ -16,5 +16,5 @@ urlpatterns = [
     path("ingredient/create/", IngredientCreateView.as_view(), name="create"),
     path("ingredient/update/<int:id>/", IngredientUpdateView.as_view(), name="update"),
     path("ingredient/delete/<int:id>/", IngredientDeleteView.as_view(), name="delete"),
-    path('ingredient/search/', views.ingredient_list, name='search')
+    path('ingredient/ingredient_search/', views.ingredient_list, name='ingredient_search')
 ]

@@ -3,7 +3,8 @@
 {% block content %}
 
 
-<form method="post" id="createProduct" enctype="multipart/form-data" class="my-5">{% csrf_token %}
+<form method="post" id="addIngredient">
+    {% csrf_token %}
     <div class="row">
         <div class="col-md-12">
             <h4 class="mb-4">Cadastrar Receita</h4>
@@ -13,19 +14,15 @@
             <div class="mb-3">
                 {{ form|crispy }}
             </div>
-            <h5>Adicionar ingredientes</h5>
+            <h6>Escolher o(s) ingrediente(s)</h6>
             <table class="table table-striped table-hover">
                 <tbody>
                     {% for formset in items_formset %}
+                        {{ formset.id }}
                         <tr>
                             <td>
-                                {% if items_formset.can_delete %}
-                                    {{ formset.DELETE }}
-                                {% endif %}
-                            </td>
-                            <td>
-                                {{ formset.ingredient }}
-                                {{ formset.value }}
+                                <label for="{{ form.value.id_for_label }}">{{ form.value.label }}</label>
+                                {{ formset.ingredient }} {{ formset.value }}
                             </td>
                         </tr>
                     {% endfor %}

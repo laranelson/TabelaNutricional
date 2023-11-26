@@ -1,6 +1,6 @@
 
 from django.urls import path
-from django.views.generic import TemplateView # path('', TemplateView.as_view(template_name="index.html") )
+#from django.views.generic import TemplateView 
 from django.contrib.auth.decorators import login_required
 from core import views
 from django.contrib.auth import views as auth_views

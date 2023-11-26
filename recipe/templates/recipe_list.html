@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<div class="mt-0">
 <div class="row">
     <div class="col-md-4">
         <!-- Celula 1 -->
@@ -16,8 +16,8 @@
     <div class="col-md-4 text-right">
         <!-- Celula 3 -->
         <div>
-            <form method="GET" action="{% url 'recipe:search' %}">
-                <input type="text" name="search" placeholder="Pesquisar por receita">
+            <form method="GET" action="{% url 'recipe:recipe_search' %}">
+                <input type="text" name="recipe_search" placeholder="Pesquisar por receita">
                 <button type="submit" class="btn btn-primary">Pesquisar</button>
             </form>
         </div>
@@ -62,7 +62,7 @@
        
     </ul>
 
-
+</div>
 
 
 

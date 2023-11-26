@@ -41,7 +41,6 @@ class RecipeItem(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, verbose_name='Ingrediente')
     value = models.FloatField('Valor em (g)')
-    #user = models.ForeignKey(User, on_delete=models.CASCADE) 
     
     class Meta:
         verbose_name = 'item da Receita'

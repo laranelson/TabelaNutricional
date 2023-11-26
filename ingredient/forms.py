@@ -1,5 +1,7 @@
 from django import forms
 from .models import Ingredient
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Field, Div
 
 # Este é um widget personalizado que herda de forms.NumberInput
 # Ele é responsável por renderizar o campo de input para floats
@@ -14,7 +16,7 @@ class HiddenDefaultFloatInput(forms.NumberInput):
 class IngredientForm(forms.ModelForm):
     class Meta:
         model = Ingredient
-        fields = '__all__'  
+        fields = '__all__'
         exclude = ['user']  # Exclui o campo 'user' do formulário
 
     # Este método é executado durante a validação do formulário
@@ -34,7 +36,40 @@ class IngredientForm(forms.ModelForm):
             'gorduras_trans',
             'fibra_alimentar', 
             'sodio', 
-            'vitamina_a'
+            'vitamina_a',
+            'vitamina_d',
+            'vitamina_c',
+            'vitamina_e',
+            'tiamina',
+            'riboflavina',
+            'niacina',
+            'vitamina_b6',
+            'vitamina_b9',
+            'acido_folico',
+            'vitamina_b12',
+            'biotina',
+            'acido_pantotenico',
+            'calcio',
+            'ferro',
+            'magnesio',
+            'zinco',
+            'iodo',
+            'vitamina_k',
+            'fosforo',
+            'fluor',
+            'cobre',
+            'selenio',
+            'molibdenio',
+            'cromo',
+            'manganes',
+            'colina',
+            'potassio',
+            'gorduras_monoinsaturadas',
+            'colesterol',
+            'gorduras_omega3',
+            'gorduras_omega6',
+            'acido_omega3',
+            'acido_omega6'
         ]
 
         # Verifica se os campos estão vazios e, se estiverem, define o valor para 0.0
@@ -49,6 +84,61 @@ class IngredientForm(forms.ModelForm):
     # Além disso, define os campos como não obrigatórios e com valor inicial None para evitar a exibição de 0.0 no formulário
     def __init__(self, *args, **kwargs):
         super(IngredientForm, self).__init__(*args, **kwargs)
+        
+        self.helper = FormHelper(self)
+        self.helper.layout = Layout(
+            Div(
+                Field('name'),
+                Field('portion'),
+                Field('carboidrato'),
+                Field('acucares_totais'),
+                Field('acucares_adicionados'),
+                Field('proteina'),
+                Field('gorduras_totais'),
+                Field('gorduras_saturadas'),
+                Field('gorduras_trans'),
+                Field('fibra_alimentar'),
+                Field('sodio'),
+            ),
+            
+            Div(
+                Field('vitamina_a'),
+                Field('vitamina_d'),
+                Field('vitamina_c'),
+                Field('vitamina_e'),
+                Field('tiamina'),
+                Field('riboflavina'),
+                Field('niacina'),
+                Field('vitamina_b6'),
+                Field('vitamina_b9'),
+                Field('acido_folico'),
+                Field('vitamina_b12'),
+                Field('biotina'),
+                Field('acido_pantotenico'),
+                Field('calcio'),
+                Field('ferro'),
+                Field('magnesio'),
+                Field('zinco'),
+                Field('iodo'),
+                Field('vitamina_k'),
+                Field('fosforo'),
+                Field('fluor'),
+                Field('cobre'),
+                Field('selenio'),
+                Field('molibdenio'),
+                Field('cromo'),
+                Field('manganes'),
+                Field('colina'),
+                Field('potassio'),
+                Field('gorduras_monoinsaturadas'),
+                Field('colesterol'),
+                Field('gorduras_omega3'),
+                Field('gorduras_omega6'),
+                Field('acido_omega3'),
+                Field('acido_omega6'),
+                css_class='ocultar'
+            )
+        )
 
         # Lista de campos para os quais queremos ocultar o valor 0.0
         fields_to_hide = [
@@ -61,7 +151,40 @@ class IngredientForm(forms.ModelForm):
             'gorduras_trans',
             'fibra_alimentar', 
             'sodio', 
-            'vitamina_a'
+            'vitamina_a',
+            'vitamina_d',
+            'vitamina_c',
+            'vitamina_e',
+            'tiamina',
+            'riboflavina',
+            'niacina',
+            'vitamina_b6',
+            'vitamina_b9',
+            'acido_folico',
+            'vitamina_b12',
+            'biotina',
+            'acido_pantotenico',
+            'calcio',
+            'ferro',
+            'magnesio',
+            'zinco',
+            'iodo',
+            'vitamina_k',
+            'fosforo',
+            'fluor',
+            'cobre',
+            'selenio',
+            'molibdenio',
+            'cromo',
+            'manganes',
+            'colina',
+            'potassio',
+            'gorduras_monoinsaturadas',
+            'colesterol',
+            'gorduras_omega3',
+            'gorduras_omega6',
+            'acido_omega3',
+            'acido_omega6'
         ]
 
         # Para cada campo, configura o widget para ocultar o 0.0, define como não obrigatório e inicializa como None

@@ -31,3 +31,5 @@ def submit_login(request):
 def logout(request):
     app_logout(request)
     return redirect("index")
+
+

@@ -138,7 +138,7 @@ class RecipeDeleteView(LoginRequiredMixin, DeleteView):
 
 
 def recipe_list(request):
-    search_query = request.GET.get('search')
+    search_query = request.GET.get('recipe_search')
     
     if search_query:
         recipe_list = Recipe.objects.filter(user=request.user, name__icontains=search_query)

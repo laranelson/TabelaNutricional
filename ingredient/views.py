@@ -70,7 +70,7 @@ from django.http import HttpRequest
 
 
 def ingredient_list(request):
-    search_query = request.GET.get('search')
+    search_query = request.GET.get('ingredient_search')
     
     if search_query:
         ingredient_list = Ingredient.objects.filter(user=request.user, name__icontains=search_query)
